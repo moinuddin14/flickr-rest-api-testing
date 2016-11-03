@@ -1,6 +1,7 @@
 package com.spotqa.test;
 
 import org.apache.commons.codec.binary.Base64;
+
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.UnsupportedEncodingException;
@@ -17,7 +18,7 @@ public class OAuthRestAPITestCase {
     private static String oauth_verifier;
     private static String accessTokenStr;
     private static String CONSUMER_KEY = "7a09488ff528e9f331b3d1a8f842b7be";
-    private static String CONSUMER_SECRET="168a516857943e38";
+    private static String CONSUMER_SECRET = "168a516857943e38";
 
     private static String sha1(String s, String oauth_secret_key) throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException {
 
@@ -28,17 +29,16 @@ public class OAuthRestAPITestCase {
 
         byte[] bytes = mac.doFinal(s.getBytes("UTF-8"));
 
-        return new String(Base64.encodeBase64(bytes) );
+        return new String(Base64.encodeBase64(bytes));
     }
 
-    private static void requestToken(String url)
-    {
+    private static void requestToken(String url) {
         requestTokenStr = "";
         return;
     }
 
 
-    private static final void tokenRequest(){
+    private static final void tokenRequest() {
         //Step One: Singing Requests
         //Get timestamp
         Date date = new Date();
@@ -55,7 +55,7 @@ public class OAuthRestAPITestCase {
 
         String oauth_signature;
         try {
-            oauth_signature = sha1(realm,CONSUMER_SECRET);
+            oauth_signature = sha1(realm, CONSUMER_SECRET);
             System.out.println(oauth_signature);
 
             oauth_timestamp = date.getTime();
@@ -84,19 +84,18 @@ public class OAuthRestAPITestCase {
 
     }
 
-    public static String generateNonce(){
+    public static String generateNonce() {
         //return UUID.randomUUID().toString();
         String nonce = Long.toString(System.nanoTime());
         return nonce;
     }
 
-    private static final void accessRequest(){
+    private static final void accessRequest() {
 
 
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         String oauth_nonce, oauth_timestamp, oauth_signature_method,
                 oauth_version = "1.0", ouath_signature, oauth_callback;
 

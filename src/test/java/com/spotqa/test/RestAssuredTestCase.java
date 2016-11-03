@@ -1,6 +1,7 @@
 package com.spotqa.test;
 
 import org.junit.Test;
+
 import static com.jayway.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
@@ -11,7 +12,7 @@ public class RestAssuredTestCase {
 
 
     @Test
-    public void testMethodOne(){
+    public void testMethodOne() {
 
         String str1 = given().
                 when().

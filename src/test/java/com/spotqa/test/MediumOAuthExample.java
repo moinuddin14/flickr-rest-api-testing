@@ -18,7 +18,7 @@ public class MediumOAuthExample {
     String baseString1 = "GET";
 
     String nonce = "flickr_oauth" + String.valueOf(System.currentTimeMillis());
-    String timestamp = String.valueOf(System.currentTimeMillis()/1000);
+    String timestamp = String.valueOf(System.currentTimeMillis() / 1000);
     String callbackParam = "oauth_callback=" + oauthEncode("http://flickr.com");
     String apiKeyParam = "oauth_consumer_key=" + "7a09488ff528e9f331b3d1a8f842b7be"; //your apiKey from flickr
     String nonceParam = "oauth_nonce=" + nonce;
@@ -50,8 +50,7 @@ public class MediumOAuthExample {
         return encoded;
     }
 
-    private String getSignature(String key, String data)
-    {
+    private String getSignature(String key, String data) {
         final String HMAC_ALGORITHM = "HmacSHA1";
         SecretKeySpec keySpec = new SecretKeySpec(key.getBytes(), HMAC_ALGORITHM);
         Mac macInstance = null;
@@ -66,6 +65,7 @@ public class MediumOAuthExample {
         byte[] signedBytes = macInstance.doFinal(data.getBytes());
         return Base64.getEncoder().encodeToString(signedBytes);
     }
+
     String signature = getSignature(baseString3, baseString);
     String signatureParam = "oauth_signature=" + oauthEncode(signature);
 

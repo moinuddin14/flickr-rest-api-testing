@@ -26,5 +26,8 @@
         <module name="Rest-Assured-Framework" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Rest-Assured-Framework" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>

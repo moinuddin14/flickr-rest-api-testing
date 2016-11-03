@@ -27,7 +27,7 @@ public class OAuthForFlickr {
 
     static String consumer_key = "e37c2eb1986d3009d5526834030664d3";
     static String signature_method = "HMAC-SHA1";
-    static String oauth_version= "1.0";
+    static String oauth_version = "1.0";
     static String callback = "";
 
     public static void main(String[] args) {
@@ -59,13 +59,13 @@ public class OAuthForFlickr {
 
     }
 
-    public static String generateNonce(){
+    public static String generateNonce() {
         //return UUID.randomUUID().toString();
         String nonce = Long.toString(System.nanoTime());
         return nonce;
     }
 
-    public static String getTimeStamp(){
+    public static String getTimeStamp() {
         String timeStamp = Long.toString((System.currentTimeMillis()) / 1000);
         return timeStamp;
     }
@@ -87,8 +87,7 @@ public class OAuthForFlickr {
         return encoded;
     }
 
-    private String getSignature(String key, String data)
-    {
+    private String getSignature(String key, String data) {
         final String HMAC_ALGORITHM = "HmacSHA1";
         SecretKeySpec keySpec = new SecretKeySpec(key.getBytes(), HMAC_ALGORITHM);
         Mac macInstance = null;
@@ -103,6 +102,7 @@ public class OAuthForFlickr {
         byte[] signedBytes = macInstance.doFinal(data.getBytes());
         return Base64.getEncoder().encodeToString(signedBytes);
     }
+
     String signature = getSignature(consumer_key, "baseString");
     String signatureParam = "oauth_signature=" + oauthEncode(signature);
 
